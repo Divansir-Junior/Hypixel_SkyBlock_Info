@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+Hypixel Info
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Status: In development
 
-Currently, two official plugins are available:
+Hypixel Info is a small web application that allows users to search for a Minecraft player and retrieve basic information related to their Hypixel profile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The user enters a player's nickname and the application fetches data from external APIs, displaying relevant information such as the player's skin and profile details.
 
-## React Compiler
+---
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Features
 
-## Expanding the ESLint configuration
+- Search players by nickname
+- Display the player's Minecraft skin
+- Retrieve basic Hypixel profile information
+- Simple and fast interface
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+How it works
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. The user enters a Minecraft username.
+2. The application sends requests to external APIs.
+3. The returned data is processed.
+4. The information is displayed on the interface.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Example of displayed data
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Player name
+- UUID
+- Minecraft skin
+- Basic Hypixel statistics
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+Tech Stack
+
+- React
+- TypeScript
+- HTML
+- CSS
+- Hypixel / Minecraft APIs
+
+---
+
+Project Goal
+
+The purpose of this project is to practice:
+
+- API integration
+- Handling HTTP requests
+- Working with React and TypeScript
+- Building simple tools based on external data
+
+---
+
+Future Improvements
+
+- More detailed player statistics
+- Player comparison
+- Better UI
+- Additional Hypixel data
+
+---
+
+Author
+
+Divansir Scrobut
