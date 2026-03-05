@@ -8,7 +8,6 @@ export default function App() {
       <Header />
       <Container>
         <SearchBar></SearchBar>
-        <SearchButton></SearchButton>
       </Container>
     </div>
   );
