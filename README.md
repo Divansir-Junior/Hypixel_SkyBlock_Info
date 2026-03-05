@@ -1,14 +1,14 @@
-Hypixel Info
+# Hypixel Info
 
-Status: In development
+**Status:** In development
 
-Hypixel Info is a small web application that allows users to search for a Minecraft player and retrieve basic information related to their Hypixel profile.
+Hypixel Info is a web application that allows users to search for a Minecraft player and retrieve basic information from their Hypixel profile.
 
-The user enters a player's nickname and the application fetches data from external APIs, displaying relevant information such as the player's skin and profile details.
+The user enters a player's nickname and the application fetches data from external APIs, displaying relevant information such as the player's skin and some profile details.
 
 ---
 
-Features
+## Features
 
 - Search players by nickname
 - Display the player's Minecraft skin
@@ -17,7 +17,7 @@ Features
 
 ---
 
-How it works
+## How it works
 
 1. The user enters a Minecraft username.
 2. The application sends requests to external APIs.
@@ -26,7 +26,7 @@ How it works
 
 ---
 
-Example of displayed data
+## Example of displayed data
 
 - Player name
 - UUID
@@ -35,36 +35,37 @@ Example of displayed data
 
 ---
 
-Tech Stack
+## Tech Stack
 
 - React
 - TypeScript
 - HTML
 - CSS
-- Hypixel / Minecraft APIs
+- Hypixel API
+- Minecraft related APIs
 
 ---
 
-Project Goal
+## Project Goal
 
 The purpose of this project is to practice:
 
 - API integration
 - Handling HTTP requests
 - Working with React and TypeScript
-- Building simple tools based on external data
+- Building tools that consume external APIs
 
 ---
 
-Future Improvements
+## Future Improvements
 
 - More detailed player statistics
 - Player comparison
-- Better UI
-- Additional Hypixel data
+- Improved UI
+- Additional Hypixel profile data
 
 ---
 
-Author
+## Author
 
 Divansir Scrobut
