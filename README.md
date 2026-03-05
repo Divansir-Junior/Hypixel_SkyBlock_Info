@@ -1,10 +1,10 @@
 # Hypixel Info
 
-**Status:** In development
+Hypixel Info is a web application that allows users to search for a Minecraft player and retrieve information from their Hypixel profile.
 
-Hypixel Info is a web application that allows users to search for a Minecraft player and retrieve basic information from their Hypixel profile.
+The user enters a player's nickname and the application fetches data from external APIs, displaying useful information such as the player's skin, UUID, and some basic statistics.
 
-The user enters a player's nickname and the application fetches data from external APIs, displaying relevant information such as the player's skin and some profile details.
+> Status: **In development**
 
 ---
 
@@ -12,60 +12,62 @@ The user enters a player's nickname and the application fetches data from extern
 
 - Search players by nickname
 - Display the player's Minecraft skin
-- Retrieve basic Hypixel profile information
-- Simple and fast interface
-
----
-
-## How it works
-
-1. The user enters a Minecraft username.
-2. The application sends requests to external APIs.
-3. The returned data is processed.
-4. The information is displayed on the interface.
-
----
-
-## Example of displayed data
-
-- Player name
-- UUID
-- Minecraft skin
-- Basic Hypixel statistics
+- Retrieve basic Hypixel profile data
+- Simple and responsive interface
 
 ---
 
 ## Tech Stack
 
-- React
-- TypeScript
-- HTML
-- CSS
-- Hypixel API
-- Minecraft related APIs
+| Technology | Usage |
+|-----------|------|
+| React | Frontend framework |
+| TypeScript | Type safety |
+| HTML / CSS | Interface structure and styling |
+| Hypixel API | Player statistics |
+| Minecraft APIs | Player UUID and skin |
 
 ---
 
-## Project Goal
+## How It Works
 
-The purpose of this project is to practice:
+1. The user enters a Minecraft username.
+2. The application sends requests to external APIs.
+3. The received data is processed by the frontend.
+4. The player's information is rendered on the page.
+
+---
+
+## Example Data Displayed
+
+- Player name  
+- UUID  
+- Minecraft skin  
+- Basic Hypixel statistics  
+
+---
+
+## Project Goals
+
+This project was created to practice:
 
 - API integration
-- Handling HTTP requests
-- Working with React and TypeScript
-- Building tools that consume external APIs
+- HTTP requests
+- React with TypeScript
+- Data rendering in modern frontend applications
 
 ---
 
-## Future Improvements
+## Planned Improvements
 
 - More detailed player statistics
 - Player comparison
-- Improved UI
+- Improved UI and layout
 - Additional Hypixel profile data
+- Performance improvements
 
 ---
 
 ## Author
 
-Divansir Scrobut
+**Divansir Scrobut**
