@@ -6,7 +6,7 @@ interface Props {
 
 export default function Container({ children }: Props) {
   return (
-    <div className="w-full h-[340px] bg-amber-900 flex items-center justify-center">
+    <div className="w-full h-[200px] bg-amber-900 flex items-center justify-center">
       {children}
     </div>
   );
