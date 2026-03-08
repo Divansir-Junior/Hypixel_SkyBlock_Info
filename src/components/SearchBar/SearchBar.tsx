@@ -13,26 +13,19 @@ export default function SearchBar() {
   }
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+    // Input container  + button
+    <div className="flex items-center gap-2">
+      {/* Player name input */}
       <input
         placeholder="Player name..."
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-        style={{
-          fontFamily: "'Minecraft', sans-serif",
-          fontSize: "0.9rem",
-          color: "#f0e6d0",
-          background: "#1a1008",
-          border: "2px solid #3d2b1f",
-          padding: "10px 16px",
-          outline: "none",
-          width: "280px",
-          letterSpacing: "0.05em",
-        }}
+        className="font-['Minecraft'] text-[#f0e6d0] bg-[#1a1008] border-2 border-[#3d2b1f] px-4 py-2.5 outline-none w-[280px] tracking-[0.05em] text-sm transition-colors duration-150"
         onFocus={(e) => (e.target.style.borderColor = "#f5c842")}
         onBlur={(e) => (e.target.style.borderColor = "#3d2b1f")}
       />
+
       <SearchButton onClick={handleSearch} />
     </div>
   );
