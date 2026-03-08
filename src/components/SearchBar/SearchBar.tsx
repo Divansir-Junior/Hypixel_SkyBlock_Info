@@ -13,22 +13,25 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="flex items-center bg-transparent">
-      <img
-        src="https://ccvaults.com/assets/10.%20Items/27.%20Signs/Bamboo_Sign.png"
-        alt="Search"
-        className="w-10 h-10 object-contain mr-5 mb-1"
-      />
+    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
       <input
-        className="font-['Minecraft'] text-white border-2 border-amber-950 outline-none placeholder:text-amber-200 w-64 px-3 py-1"
-        style={{
-          backgroundImage:
-            "url('https://ccvaults.com/textures/dark_oak_planks.png')",
-          backgroundSize: "32px",
-        }}
-        placeholder="Name player ..."
+        placeholder="Player name..."
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+        style={{
+          fontFamily: "'Minecraft', sans-serif",
+          fontSize: "0.9rem",
+          color: "#f0e6d0",
+          background: "#1a1008",
+          border: "2px solid #3d2b1f",
+          padding: "10px 16px",
+          outline: "none",
+          width: "280px",
+          letterSpacing: "0.05em",
+        }}
+        onFocus={(e) => (e.target.style.borderColor = "#f5c842")}
+        onBlur={(e) => (e.target.style.borderColor = "#3d2b1f")}
       />
       <SearchButton onClick={handleSearch} />
     </div>

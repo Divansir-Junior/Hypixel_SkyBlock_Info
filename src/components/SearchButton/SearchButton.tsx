@@ -5,12 +5,20 @@ interface Props {
 export default function SearchButton({ onClick }: Props) {
   return (
     <button
-      className="font-['Minecraft'] ml-4 px-3 py-1.5 border-2 border-amber-950 text-amber-100 cursor-pointer transition-all duration-200 hover:bg-amber-950"
+      onClick={onClick}
       style={{
-        backgroundImage:
-          "url('https://ccvaults.com/textures/dark_oak_planks.png')",
-        backgroundSize: "32px",
+        fontFamily: "'Minecraft', sans-serif",
+        fontSize: "0.8rem",
+        color: "#0f0f0f",
+        background: "#f5c842",
+        border: "none",
+        padding: "10px 20px",
+        cursor: "pointer",
+        letterSpacing: "0.1em",
+        transition: "background 0.15s ease",
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.background = "#ffd700")}
+      onMouseLeave={(e) => (e.currentTarget.style.background = "#f5c842")}
     >
       Search
     </button>
