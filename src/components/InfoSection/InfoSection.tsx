@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as skinview3d from "skinview3d";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 function SkinViewer({ uuid }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const viewerRef = useRef<skinview3d.SkinViewer | null>(null);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -24,11 +25,19 @@ function SkinViewer({ uuid }: Props) {
     return () => viewerRef.current?.dispose();
   }, [uuid]);
 
-  // Pausa ou retoma a rotação da skin
+  // Pausa ou retoma a rotação
   function handleToggle() {
     if (!viewerRef.current) return;
     viewerRef.current.autoRotate = !viewerRef.current.autoRotate;
   }
+
+  // Fecha e esconde o viewer
+  function handleClose() {
+    viewerRef.current?.dispose();
+    setVisible(false);
+  }
+
+  if (!visible) return null;
 
   return (
     <div className="relative">
@@ -38,6 +47,12 @@ function SkinViewer({ uuid }: Props) {
         onClick={handleToggle}
       >
         ⏸
+      </button>
+      <button
+        className="absolute top-0 left-0 font-['Minecraft'] text-red-400 text-xs"
+        onClick={handleClose}
+      >
+        ✕
       </button>
     </div>
   );
