@@ -105,7 +105,7 @@ export default function InfoSection() {
       </div>
 
       {/* Skin lado direito */}
-      <div className="flex flex-col items-center gap-2 w-48">
+      <div className="flex flex-col items-center gap-2 w-48 border border-white">
         <SkinViewer
           uuid="a0a31a8e99944672b384ebc35669607c"
           visible={visible}
