@@ -10,7 +10,9 @@ export default function App() {
       <Container>
         <SearchBar />
       </Container>
-      <GameCarousel />
     </div>
   );
 }
+
+
+

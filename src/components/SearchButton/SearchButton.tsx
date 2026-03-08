@@ -1,5 +1,3 @@
-import { Search } from "lucide-react";
-
 interface Props {
   onClick: () => void;
 }
@@ -7,18 +5,14 @@ interface Props {
 export default function SearchButton({ onClick }: Props) {
   return (
     <button
-      onClick={onClick}
-      className="
-        border-2 ml-4 p-0.5
-        font-['Minecraft']
-        flex items-center justify-center gap-2
-        text-black cursor-pointer bg-amber-50
-        transition-all duration-300 ease-in-out
-        hover:text-green-500 hover:bg-white
-      "
+      className="font-['Minecraft'] ml-4 px-3 py-1.5 border-2 border-amber-950 text-amber-100 cursor-pointer transition-all duration-200 hover:bg-amber-950"
+      style={{
+        backgroundImage:
+          "url('https://ccvaults.com/textures/dark_oak_planks.png')",
+        backgroundSize: "32px",
+      }}
     >
-      <Search size={20} />
-      <span>Search</span>
+      Search
     </button>
   );
 }
