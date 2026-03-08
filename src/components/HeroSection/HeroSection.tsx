@@ -4,67 +4,40 @@ import ModeSelector from "../ModeSelector/ModeSelector";
 
 export default function HeroSection() {
   const [selectedMode, setSelectedMode] = useState<string | null>(null);
+
   return (
     <section
+      className="min-h-screen flex items-center justify-center pt-14 px-8 pb-12"
       style={{
         background: "linear-gradient(180deg, #1a1008 0%, #2d1a0a 100%)",
-        minHeight: "100vh",
-        paddingTop: "56px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "80px 32px 48px",
       }}
     >
-      <div style={{ maxWidth: "900px", width: "100%" }}>
-        <div style={{ marginBottom: "48px", textAlign: "center" }}>
-          <p
-            style={{
-              fontFamily: "'Minecraft', sans-serif",
-              color: "#9a7a5a",
-              fontSize: "0.7rem",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              marginBottom: "12px",
-            }}
-          >
+      <div className="w-full max-w-[900px]">
+        <div className="text-center mb-12">
+          <p className="font-['Minecraft'] text-[#9a7a5a] text-[0.7rem] tracking-[0.3em] uppercase mb-3">
             Hypixel Network
           </p>
           <h2
+            className="font-['Minecraft'] text-[#f0e6d0] leading-tight"
             style={{
-              fontFamily: "'Minecraft', sans-serif",
-              color: "#f0e6d0",
               fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
-              lineHeight: 1.2,
               textShadow: "3px 3px 0 #1a0f05",
             }}
           >
             Search any player.
             <br />
-            <span style={{ color: "#f5c842" }}>Explore their stats.</span>
+            <span className="text-[#f5c842]">Explore their stats.</span>
           </h2>
         </div>
+
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px 1px 1fr",
-            gap: "0 48px",
-            alignItems: "center",
-          }}
+          className="grid gap-x-12 items-center"
+          style={{ gridTemplateColumns: "200px 1px 1fr" }}
         >
           <ModeSelector onSelect={setSelectedMode} selected={selectedMode} />
-          <div style={{ background: "#3d2b1f", height: "120px" }} />
+          <div className="bg-[#3d2b1f] h-[120px]" />
           <div>
-            <p
-              style={{
-                fontFamily: "'Minecraft', sans-serif",
-                color: "#9a7a5a",
-                fontSize: "0.65rem",
-                letterSpacing: "0.2em",
-                marginBottom: "16px",
-                textTransform: "uppercase",
-              }}
-            >
+            <p className="font-['Minecraft'] text-[#9a7a5a] text-[0.65rem] tracking-[0.2em] uppercase mb-4">
               {selectedMode ? `↳ ${selectedMode}` : "Select a mode →"}
             </p>
             <SearchBar />
