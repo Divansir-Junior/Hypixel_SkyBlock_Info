@@ -6,19 +6,11 @@ export default function SearchButton({ onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      style={{
-        fontFamily: "'Minecraft', sans-serif",
-        fontSize: "0.8rem",
-        color: "#0f0f0f",
-        background: "#f5c842",
-        border: "none",
-        padding: "10px 20px",
-        cursor: "pointer",
-        letterSpacing: "0.1em",
-        transition: "background 0.15s ease",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.background = "#ffd700")}
-      onMouseLeave={(e) => (e.currentTarget.style.background = "#f5c842")}
+      className="font-['Minecraft'] text-[0.8rem] text-[#0f0f0f] bg-[#f5c842]
+      border-none px-5 py-2.5 cursor-pointer tracking-[0.1em]
+      transition-all duration-200 ease-in-out
+      hover:bg-[#ffd700] hover:text-[#292929]
+      active:scale-95 active:brightness-90"
     >
       Search
     </button>
