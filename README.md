@@ -1,73 +1,114 @@
-# Hypixel Info
+# HypixelStats
 
-Hypixel Info is a web application that allows users to search for a Minecraft player and retrieve information from their Hypixel profile.
-
-The user enters a player's nickname and the application fetches data from external APIs, displaying useful information such as the player's skin, UUID, and some basic statistics.
+A web application that allows users to search for a Minecraft player and retrieve information from their Hypixel profile — including their 3D skin, UUID, and game statistics.
 
 > Status: **In development**
-
----
-
-## Features
-
-- Search players by nickname
-- Display the player's Minecraft skin
-- Retrieve basic Hypixel profile data
-- Simple and responsive interface
 
 ---
 
 ## Tech Stack
 
 | Technology | Usage |
-|-----------|------|
-| React | Frontend framework |
-| TypeScript | Type safety |
-| HTML / CSS | Interface structure and styling |
+|---|---|
+| React + TypeScript | Frontend framework |
+| Vite | Build tool |
+| Tailwind CSS | Styling |
+| Embla Carousel | Game mode carousel |
+| skinview3d | 3D skin renderer |
 | Hypixel API | Player statistics |
-| Minecraft APIs | Player UUID and skin |
+| Mojang API | UUID lookup |
+| Vercel | Hosting + Serverless Functions |
+
+---
+
+## Features
+
+### Available
+- Search players by Minecraft username
+- UUID lookup via Mojang API
+- 3D skin viewer with auto-rotate and pause/resume
+- Game mode selector (SkyBlock, BedWars, SkyWars, Duels, Murder Mystery)
+- Game mode carousel
+- Serverless backend via Vercel Functions (API key protection)
+
+### Planned
+- Display detailed SkyBlock statistics
+- BedWars and SkyWars stats
+- Player comparison
+- Responsive layout improvements
+- Error handling and loading states
 
 ---
 
 ## How It Works
 
-1. The user enters a Minecraft username.
-2. The application sends requests to external APIs.
-3. The received data is processed by the frontend.
-4. The player's information is rendered on the page.
+1. User selects a game mode from the list
+2. User enters a Minecraft username
+3. App fetches the UUID from the Mojang API
+4. UUID is sent to the Vercel serverless function
+5. Function calls the Hypixel API securely (API key never exposed)
+6. Player data is rendered on the page with a 3D skin viewer
 
 ---
 
-## Example Data Displayed
+---
 
-- Player name  
-- UUID  
-- Minecraft skin  
-- Basic Hypixel statistics  
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- A valid [Hypixel API key](https://developer.hypixel.net)
+
+### Installation
+
+```bash
+git clone https://github.com/Divansir-Junior/Hypixel_SkyBlock_Info.git
+cd Hypixel_SkyBlock_Info
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file in the root of the project:
+
+```env
+VITE_HYPIXEL_API_KEY=your_key_here
+```
+
+For production, add `HYPIXEL_API_KEY` in your Vercel project under **Settings → Environment Variables**.
+
+### Running locally
+
+```bash
+npm run dev
+```
 
 ---
 
-## Project Goals
+## Contributing
 
-This project was created to practice:
+1. Fork the repository
+2. Create a branch: `git checkout -b feat/your-feature`
+3. Commit your changes following the convention below
+4. Push and open a Pull Request
 
-- API integration
-- HTTP requests
-- React with TypeScript
-- Data rendering in modern frontend applications
+### Commit Convention
 
----
+This project follows [Conventional Commits](https://www.conventionalcommits.org):
 
-## Planned Improvements
-
-- More detailed player statistics
-- Player comparison
-- Improved UI and layout
-- Additional Hypixel profile data
-- Performance improvements
+| Prefix | Usage |
+|---|---|
+| `feat:` | New feature |
+| `fix:` | Bug fix |
+| `refactor:` | Code refactor without behavior change |
+| `style:` | Styling changes |
+| `chore:` | Tooling, dependencies, config |
+| `docs:` | Documentation changes |
 
 ---
 
 ## Author
 
-**Divansir Scrobut**
+**Divansir Scrobut**  
+[github.com/Divansir-Junior](https://github.com/Divansir-Junior)
