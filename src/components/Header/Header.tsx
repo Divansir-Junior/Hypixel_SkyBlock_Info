@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HamburgerMenu from "../Menu/Menu";
 
+import { Link } from "react-router-dom";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,12 +26,12 @@ export default function Header() {
           >
             CONTACT
           </a>
-          <a
-            href="#"
-            className="font-['Minecraft'] text-[#f5c842] text-sm hover:text-[#ffd700] transition-colors"
+          <Link
+            to="/about"
+            className="font-['Minecraft'] text-[#f5c842] text-sm hover:text-[#ffd700]"
           >
-            ABOUT
-          </a>
+            About
+          </Link>
         </div>
       )}
     </>
