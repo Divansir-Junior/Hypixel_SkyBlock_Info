@@ -38,7 +38,8 @@ function SkinViewer({ uuid, visible, onClose, onToggle }: Props) {
         ⏸
       </button>
       <button
-        className="absolute top-0 left-0 font-['Minecraft'] text-red-400 text-xs"
+        className="absolute top-0 left-0 font-['Minecraft'] text-white
+        bg-red-500 text-xs mt-0.5 w-3.5 cursor-pointer"
         onClick={onClose}
       >
         ✕
