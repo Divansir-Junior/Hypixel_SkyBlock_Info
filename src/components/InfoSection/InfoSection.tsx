@@ -142,6 +142,29 @@ export default function InfoSection({ player }: { player: PlayerData }) {
         },
       ],
     },
+
+    {
+      title: "MINING",
+      icon: "https://ccvaults.com/assets/20.%20Blocks/24.%20Skulls/Player_Head.png",
+      items: [
+        {
+          label: "Experience",
+          value: member?.skill_tree?.experience?.mining ?? "—",
+        },
+        {
+          label: "Mining speed",
+          value: member?.skill_tree?.nodes?.mining?.mining_speed ?? "—",
+        },
+        {
+          label: "Mining fortune",
+          value: member?.skill_tree?.nodes?.mining?.mining_fortune ?? "—",
+        },
+        {
+          label: "Mountain level",
+          value: member?.skill_tree?.nodes?.tokens_spent?.mountain ?? "—",
+        },
+      ],
+    },
   ];
 
   return (
