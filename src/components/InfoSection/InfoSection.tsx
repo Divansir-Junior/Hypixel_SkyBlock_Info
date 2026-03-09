@@ -7,9 +7,10 @@ interface Props {
   visible: boolean;
   onClose: () => void;
   onToggle: () => void;
+  rotating: boolean;
 }
 
-function SkinViewer({ uuid, visible, onClose, onToggle }: Props) {
+function SkinViewer({ uuid, visible, onClose, onToggle, rotating }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const viewerRef = useRef<skinview3d.SkinViewer | null>(null);
 
@@ -26,6 +27,12 @@ function SkinViewer({ uuid, visible, onClose, onToggle }: Props) {
     return () => viewerRef.current?.dispose();
   }, [uuid, visible]);
 
+  // Atualiza autoRotate quando rotating muda
+  useEffect(() => {
+    if (!viewerRef.current) return;
+    viewerRef.current.autoRotate = rotating;
+  }, [rotating]);
+
   if (!visible) return null;
 
   return (
@@ -34,8 +41,9 @@ function SkinViewer({ uuid, visible, onClose, onToggle }: Props) {
       <button
         className="absolute top-0 right-0 font-['Minecraft'] text-[#f5c842] text-xs"
         onClick={onToggle}
+        title={rotating ? "Pausar" : "Retomar"}
       >
-        ⏸
+        {rotating ? "⏸" : "▶"}
       </button>
       <button
         className="absolute top-0 left-0 font-['Minecraft'] text-white bg-red-500 text-xs mt-0.5 w-3.5 cursor-pointer"
@@ -64,7 +72,6 @@ export default function InfoSection({ player }: { player: PlayerData }) {
   const [visible, setVisible] = useState(true);
   const [rotating, setRotating] = useState(true);
 
-  // Get the most recently played profile
   const profile =
     player.profiles?.profiles?.find((p: any) => p.selected) ??
     player.profiles?.profiles?.[0];
@@ -164,8 +171,9 @@ export default function InfoSection({ player }: { player: PlayerData }) {
         <SkinViewer
           uuid={player.uuid}
           visible={visible}
+          rotating={rotating}
           onClose={() => setVisible(false)}
-          onToggle={() => setRotating(!rotating)}
+          onToggle={() => setRotating((prev) => !prev)}
         />
         {!visible && (
           <button
