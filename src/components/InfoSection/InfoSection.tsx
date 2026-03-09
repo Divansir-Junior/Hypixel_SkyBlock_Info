@@ -50,7 +50,13 @@ function SkinViewer({ uuid, visible, onClose, onToggle }: Props) {
 const statCategories = [
   {
     title: "Basic Stats",
-    items: ["Player name:", "Player UUID:", "Player level:", "First join:"],
+    items: [
+      "IMG :",
+      "Player name:",
+      "Player UUID:",
+      "Player level:",
+      "First join:",
+    ],
   },
   {
     title: "Combat",
