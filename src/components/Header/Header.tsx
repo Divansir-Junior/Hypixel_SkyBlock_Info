@@ -1,4 +1,9 @@
+import { useState } from "react";
+import HamburgerMenu from "../Menu/Menu";
+
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="fixed top-0 w-full z-50 h-14 flex items-center justify-center bg-[#0f0f0f] border-b-2 border-[#3d2b1f]">
       <h1
@@ -7,6 +12,7 @@ export default function Header() {
       >
         HypixelStats
       </h1>
+      <HamburgerMenu isOpen={isOpen} onClose={() => setIsOpen(!isOpen)} />
     </header>
   );
 }
