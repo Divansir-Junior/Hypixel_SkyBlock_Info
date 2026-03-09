@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as skinview3d from "skinview3d";
+import type { PlayerData } from "../../App";
 
 interface Props {
   uuid: string;
@@ -49,48 +50,9 @@ function SkinViewer({ uuid, visible, onClose, onToggle }: Props) {
 interface StatCategory {
   title: string;
   icon: string;
-  items: string[];
+  items: { label: string; value: string }[];
 }
 
-const statCategories: StatCategory[] = [
-  {
-    title: "Basic Stats",
-    icon: "https://ccvaults.com/assets/20.%20Blocks/24.%20Skulls/Player_Head.png",
-    items: ["Player name:", "Player UUID:", "Player level:", "First join:"],
-  },
-  {
-    title: "Combat",
-    icon: "https://ccvaults.com/assets/10.%20Items/1.%20Swords/Diamond_Sword.png",
-    items: ["Total kills:", "Total deaths:", "Highest damage:", "Death count:"],
-  },
-  {
-    title: "Economy",
-    icon: "https://ccvaults.com/assets/10.%20Items/11.%20Materials/Emerald.png",
-    items: [
-      "Coin purse:",
-      "Auctions created:",
-      "Gold earned:",
-      "Auction fees:",
-    ],
-  },
-  {
-    title: "Progression",
-    icon: "https://ccvaults.com/assets/10.%20Items/2.%20Pickaxes/Diamond_Pickaxe.png",
-    items: [
-      "SkyBlock XP:",
-      "Fairy souls:",
-      "Mithril powder:",
-      "Fishing treasure:",
-    ],
-  },
-  {
-    title: "Pets",
-    icon: "https://ccvaults.com/assets/10.%20Items/31.%20Spawn%20Eggs/fox_spawn_egg.png",
-    items: ["Active pet:", "Total pets:", "Pet XP gained:"],
-  },
-];
-
-// Verifica se o icon é uma URL ou emoji
 function CategoryIcon({ icon }: { icon: string }) {
   if (icon.startsWith("http") || icon.startsWith("/")) {
     return <img src={icon} alt="icon" className="w-5 h-5 object-contain" />;
@@ -98,9 +60,82 @@ function CategoryIcon({ icon }: { icon: string }) {
   return <span>{icon}</span>;
 }
 
-export default function InfoSection() {
+export default function InfoSection({ player }: { player: PlayerData }) {
   const [visible, setVisible] = useState(true);
   const [rotating, setRotating] = useState(true);
+
+  // Get the most recently played profile
+  const profile =
+    player.profiles?.profiles?.find((p: any) => p.selected) ??
+    player.profiles?.profiles?.[0];
+  const member = profile?.members?.[player.uuid.replace(/-/g, "")];
+
+  const statCategories: StatCategory[] = [
+    {
+      title: "Basic Stats",
+      icon: "https://ccvaults.com/assets/20.%20Blocks/24.%20Skulls/Player_Head.png",
+      items: [
+        { label: "Profile", value: profile?.cute_name ?? "—" },
+        { label: "UUID", value: player.uuid ?? "—" },
+        { label: "SkyBlock XP", value: member?.leveling?.experience ?? "—" },
+      ],
+    },
+    {
+      title: "Combat",
+      icon: "https://ccvaults.com/assets/10.%20Items/1.%20Swords/Diamond_Sword.png",
+      items: [
+        {
+          label: "Total kills",
+          value: member?.player_stats?.kills?.total ?? "—",
+        },
+        {
+          label: "Total deaths",
+          value: member?.player_stats?.deaths?.total ?? "—",
+        },
+        {
+          label: "Highest damage",
+          value: member?.player_stats?.highest_damage ?? "—",
+        },
+      ],
+    },
+    {
+      title: "Economy",
+      icon: "https://ccvaults.com/assets/10.%20Items/11.%20Materials/Emerald.png",
+      items: [
+        { label: "Coin purse", value: member?.currencies?.coin_purse ?? "—" },
+        {
+          label: "Gold earned",
+          value: member?.player_stats?.auctions?.gold_earned ?? "—",
+        },
+      ],
+    },
+    {
+      title: "Progression",
+      icon: "https://ccvaults.com/assets/10.%20Items/2.%20Pickaxes/Diamond_Pickaxe.png",
+      items: [
+        {
+          label: "Fairy souls",
+          value: member?.fairy_soul?.total_collected ?? "—",
+        },
+        {
+          label: "Mithril powder",
+          value: member?.mining_core?.powder_mithril_total ?? "—",
+        },
+      ],
+    },
+    {
+      title: "Pets",
+      icon: "https://ccvaults.com/assets/10.%20Items/31.%20Spawn%20Eggs/fox_spawn_egg.png",
+      items: [
+        { label: "Total pets", value: member?.pets_data?.pets?.length ?? "—" },
+        {
+          label: "Active pet",
+          value:
+            member?.pets_data?.pets?.find((p: any) => p.active)?.type ?? "—",
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="w-full min-h-[600px] flex items-start justify-center gap-8 bg-[#1a1008] p-8 pt-12">
@@ -114,8 +149,9 @@ export default function InfoSection() {
             </summary>
             <ul className="pl-4 mt-1 flex flex-col gap-1 font-['Minecraft'] text-[#f0e6d0] text-xs border-l border-amber-950 ml-2">
               {cat.items.map((item) => (
-                <li key={item} className="py-0.5">
-                  {item}
+                <li key={item.label} className="py-0.5 flex gap-2">
+                  <span className="text-[#9a7a5a]">{item.label}:</span>
+                  <span className="text-[#f5c842]">{item.value}</span>
                 </li>
               ))}
             </ul>
@@ -126,7 +162,7 @@ export default function InfoSection() {
       {/* Skin lado direito */}
       <div className="flex flex-col items-center gap-2 w-48 border border-white">
         <SkinViewer
-          uuid="a0a31a8e99944672b384ebc35669607c"
+          uuid={player.uuid}
           visible={visible}
           onClose={() => setVisible(false)}
           onToggle={() => setRotating(!rotating)}

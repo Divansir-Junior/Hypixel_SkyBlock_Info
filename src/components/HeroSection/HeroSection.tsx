@@ -1,9 +1,23 @@
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ModeSelector from "../ModeSelector/ModeSelector";
+import { getUUID } from "../../services/mojangService";
+import { searchHypixelPlayer } from "../../services/hypixelService";
+import type { PlayerData } from "../../App";
 
-export default function HeroSection() {
+interface Props {
+  onSearch: (data: PlayerData) => void;
+}
+
+export default function HeroSection({ onSearch }: Props) {
   const [selectedMode, setSelectedMode] = useState<string | null>(null);
+  const [username, setUsername] = useState("");
+
+  async function handleSearch() {
+    const uuid = await getUUID(username);
+    const profiles = await searchHypixelPlayer(uuid);
+    onSearch({ uuid, profiles });
+  }
 
   return (
     <section
@@ -29,7 +43,6 @@ export default function HeroSection() {
             <span className="text-[#f5c842]">Explore their stats.</span>
           </h2>
         </div>
-
         <div
           className="grid gap-x-12 items-center"
           style={{ gridTemplateColumns: "200px 1px 1fr" }}
@@ -40,7 +53,11 @@ export default function HeroSection() {
             <p className="font-['Minecraft'] text-[#9a7a5a] text-[0.65rem] tracking-[0.2em] uppercase mb-4">
               {selectedMode ? `↳ ${selectedMode}` : "Select a mode →"}
             </p>
-            <SearchBar />
+            <SearchBar
+              username={username}
+              setUsername={setUsername}
+              onSearch={handleSearch}
+            />
           </div>
         </div>
       </div>
