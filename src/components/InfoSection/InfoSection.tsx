@@ -109,7 +109,12 @@ export default function InfoSection({ player }: { player: PlayerData }) {
       title: "Economy",
       icon: "https://ccvaults.com/assets/10.%20Items/11.%20Materials/Emerald.png",
       items: [
-        { label: "Coin purse", value: member?.currencies?.coin_purse ?? "—" },
+        {
+          label: "Coin purse",
+          value: member?.currencies?.coin_purse
+            ? Math.floor(member.currencies.coin_purse).toLocaleString()
+            : "—",
+        },
         {
           label: "Gold earned",
           value: member?.player_stats?.auctions?.gold_earned ?? "—",
