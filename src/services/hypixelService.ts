@@ -1,11 +1,6 @@
-import api from "./api";
+import axios from "axios";
 
 export async function searchHypixelPlayer(uuid: string) {
-  const { data } = await api.get("/skyblock/profiles", {
-    params: {
-      uuid,
-      key: import.meta.env.VITE_HYPIXEL_API_KEY,
-    },
-  });
+  const { data } = await axios.get(`/api/hypixel?uuid=${uuid}`);
   return data;
 }
