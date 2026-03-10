@@ -161,7 +161,7 @@ export default function InfoSection({ player }: { player: PlayerData }) {
         },
         {
           label: "Mountain level",
-          value: member?.skill_tree?.nodes?.tokens_spent?.mountain ?? "—",
+          value: member?.skill_tree?.tokens_spent?.mountain ?? "—",
         },
       ],
     },
