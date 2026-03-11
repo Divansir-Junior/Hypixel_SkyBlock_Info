@@ -27,12 +27,12 @@ A web application that allows users to search for a Minecraft player and retriev
 - Search players by Minecraft username
 - UUID lookup via Mojang API
 - 3D skin viewer with auto-rotate and pause/resume
+- Display detailed SkyBlock statistics
 - Game mode selector (SkyBlock, BedWars, SkyWars, Duels, Murder Mystery)
 - Game mode carousel
 - Serverless backend via Vercel Functions (API key protection)
 
 ### Planned
-- Display detailed SkyBlock statistics
 - BedWars and SkyWars stats
 - Player comparison
 - Responsive layout improvements
