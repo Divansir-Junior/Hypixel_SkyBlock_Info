@@ -123,7 +123,7 @@ export default function InfoSection({ player }: { player: PlayerData }) {
     },
     {
       title: "Progression",
-      icon: "https://ccvaults.com/assets/10.%20Items/2.%20Pickaxes/Diamond_Pickaxe.png",
+      icon: "https://ccvaults.com/assets/20.%20Blocks/33.%20Workplaces/Anvil.png",
       items: [
         {
           label: "Fairy souls",
@@ -150,7 +150,7 @@ export default function InfoSection({ player }: { player: PlayerData }) {
 
     {
       title: "MINING",
-      icon: "https://ccvaults.com/assets/20.%20Blocks/24.%20Skulls/Player_Head.png",
+      icon: "https://ccvaults.com/assets/10.%20Items/2.%20Pickaxes/Diamond_Pickaxe.png",
       items: [
         {
           label: "Experience",
